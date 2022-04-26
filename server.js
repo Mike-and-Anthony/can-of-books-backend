@@ -22,16 +22,13 @@ db.once('open', function () {
 
 
 //ROUTES***************************************
-app.get('/Book', getBooks);
-app.post('/Books', postBooks);
-app.delete('/Books/:id', deleteBooks);
+app.get('/books', getBooks);
+app.post('/books', postBooks);
+app.delete('/books/:id', deleteBooks);
 
 async function getBooks(req, res, next) {
   try {
     let queryObject = {}
-    if (req.query.location) {
-      queryObject.location = req.query.location;
-    }
     let results = await Books.find(queryObject);
     res.status(200).send(results);
   } catch(err) {
