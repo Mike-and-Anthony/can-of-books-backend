@@ -1,10 +1,12 @@
 
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
 
 const newBooks = new mongoose.Schema({
-  title:  String, // String is shorthand for {type: String}
-  description: String,
-  status:   String,
+  title: {type: String, req: true},
+  description:  {type: String, req: true},
+  status:   {type: String, req: true}
 });
 
 const bookModel = mongoose.model('books', newBooks);
