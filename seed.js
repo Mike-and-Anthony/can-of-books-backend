@@ -19,8 +19,13 @@ async function seed() {
     description: 'adventure',
     status: true,
   });
+  await Book.create({
+    title:  'the Way of Kings', // String is shorthand for {type: String}
+    description: 'Fantasy',
+    status: true,
+  });
   console.log('new book created');
   mongoose.disconnect();
 }
 
-module.exports = seed 
+seed();
