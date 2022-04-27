@@ -2,7 +2,7 @@
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
-David Heckler, Justin Hammerly for being  these most solid TA's We can have
+David Heckler, Justin Hammerly, and Kiean for being  these most solid TA's We can have
 
 ## Team Strengths
 
@@ -49,6 +49,16 @@ Anthony's Strengths
 
 * Start time: 13:00
 
-* Finish time:
+* Finish time:1440
 
 * Actual time needed to complete:4.5hrs
+
+* Name of feature: Update
+
+* Estimate of time needed to complete: 2 hrs
+
+* Start time: 1:30
+
+* Finish time: 3:35
+
+* Actual time needed to complete: 2 hrs 5 mins 
