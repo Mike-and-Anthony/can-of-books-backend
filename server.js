@@ -58,6 +58,7 @@ async function deleteBooks (req, res, next) {
   }
 }
 app.put('/Books/:id', async (req, res) => {
+  console.log(req.body)
   const { title, description, status } = req.body;
   const updatedBooks = await Books.findByIdAndUpdate(req.params.id, { title, description, status }, { new: true, overwrite: true });
   res.send(updatedBooks);
