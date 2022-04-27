@@ -26,7 +26,7 @@ db.once('open', function () {
 app.get('/books', getBooks);
 app.post('/books', postBooks);
 app.delete('/books/:id', deleteBooks);
-
+app.put('/Books/:id',updateBooks);
 async function getBooks(req, res, next) {
   try {
     let queryObject = {}
@@ -57,11 +57,11 @@ async function deleteBooks (req, res, next) {
     next(err);
   }
 }
-app.put('/Books/:id', async (req, res) => {
+async function updateBooks (req, res) {
   const { title, description, status } = req.body;
   const updatedBooks = await Books.findByIdAndUpdate(req.params.id, { title, description, status }, { new: true, overwrite: true });
   res.send(updatedBooks);
-});
+};
 
 app.get('*', (req, res) => {
   res.status(404).send('Not availabe');
