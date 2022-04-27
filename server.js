@@ -6,13 +6,14 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 app.use(cors());
+app.use(express.json());
 const PORT = process.env.PORT || 3001;
 const mongoose = require('mongoose');
-console.log(process.env.DB_URL);
+// console.log(process.env.DB_URL);
 mongoose.connect(process.env.DB_URL);
 
 const Books = require('./models/book.js');
-const req = require('express/lib/request');
+// const req = require('express/lib/request');
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -26,7 +27,7 @@ db.once('open', function () {
 app.get('/books', getBooks);
 app.post('/books', postBooks);
 app.delete('/books/:id', deleteBooks);
-app.put('/Books/:id',updateBooks);
+app.put('/books/:id',updateBooks);
 async function getBooks(req, res, next) {
   try {
     let queryObject = {}
@@ -58,8 +59,7 @@ async function deleteBooks (req, res, next) {
   }
 }
 async function updateBooks (req, res) {
-  const { title, description, status } = req.body;
-  const updatedBooks = await Books.findByIdAndUpdate(req.params.id, { title, description, status }, { new: true, overwrite: true });
+  const updatedBooks = await Books.findByIdAndUpdate(req.params.id, req.body, { new: true, overwrite: true });
   res.send(updatedBooks);
 };
 
