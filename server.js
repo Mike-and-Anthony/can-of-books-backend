@@ -1,5 +1,6 @@
 'use strict';
 //consts
+
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -56,6 +57,12 @@ async function deleteBooks (req, res, next) {
     next(err);
   }
 }
+app.put('/Books/:id', async (req, res) => {
+  const { title, description, status } = req.body;
+  const updatedBooks = await Books.findByIdAndUpdate(req.params.id, { title, description, status }, { new: true, overwrite: true });
+  res.send(updatedBooks);
+});
+
 app.get('*', (req, res) => {
   res.status(404).send('Not availabe');
 })
